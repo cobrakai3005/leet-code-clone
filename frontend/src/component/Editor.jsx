@@ -20,14 +20,16 @@ export default function Editor({ starterCode, problem }) {
   const runCode = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/run/${problem?._id}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/run/${problem?._id}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code }),
+        }
+      );
 
       const data = await res.json();
-
 
       if (data?.success) {
         const raw = data?.stdout || "";
@@ -57,7 +59,7 @@ export default function Editor({ starterCode, problem }) {
     setSubmitOutput([]);
     try {
       const res = await fetch(
-        `http://localhost:3000/submissions/${problem._id}`,
+        `${import.meta.env.VITE_API_URL}/submissions/${problem._id}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

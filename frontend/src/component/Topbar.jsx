@@ -11,7 +11,7 @@ export default function Topbar() {
       <div className=" w-full  min-h-36 mx-auto  p-7 bg-gradient-to-br from-violet-700  v to-zinc-900 rounded-tl-[200px]  rounded-tr-[200px]">
         {/* <img src="/logo.jpg" alt="" className="max-w-56" /> */}
         <div className="flex justify-center gap-2">
-          <h1 className="text-[77px] text-sky-200">CODE  -</h1>
+          <h1 className="text-[77px] text-sky-200">CODE -</h1>
           <h1 className="text-[77px] text-sky-200">ARENA JS</h1>
         </div>
         <Navbar />
@@ -30,10 +30,10 @@ const topbarItems = [
     title: "Problems",
     route: "/problems",
   },
-  {
-    title: "Leaderboard",
-    route: "/leaderboard",
-  },
+  // {
+  //   title: "Leaderboard",
+  //   route: "/leaderboard",
+  // },
   {
     title: "Account",
     route: "/account",

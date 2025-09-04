@@ -10,7 +10,9 @@ export default function useProblem() {
     setLoad(true);
     await new Promise((res, rej) => setTimeout(res, 1200));
     try {
-      const res = await fetch(`http://localhost:3000/problems/${problem}`);
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/problems/${problem}`
+      );
       const data = await res.json();
       setProblemDescription(data);
     } catch (error) {

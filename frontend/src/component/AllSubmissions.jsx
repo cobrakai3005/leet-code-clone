@@ -11,13 +11,16 @@ export default function AllSubmissions() {
     setLoad(true);
     await new Promise((res, rej) => setTimeout(res, 1200));
     try {
-      const res = await fetch(`http://localhost:3000/submissions/${user.id}`);
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/submissions/${user.id}`
+      );
       const data = await res.json();
 
       if (data.success == true) {
         setSubmissions(data?.submissions);
       }
     } catch (error) {
+      console.log(error);
     } finally {
       setLoad(false);
     }
@@ -30,7 +33,10 @@ export default function AllSubmissions() {
     <div>
       <h3 className="text-xl m-3">All Submissions</h3>
       {submissions.map((el, i) => (
-        <div className="w-full  h-16 border-[1px] border-zinc-100/5 shadow-sm hover:shadow-white  rounded-lg  flex flex-col justify-center  items-start gap-3 ">
+        <div
+          key={i}
+          className="w-full  h-16 border-[1px] border-zinc-100/5 shadow-sm hover:shadow-white  rounded-lg  flex flex-col justify-center  items-start gap-3 "
+        >
           <Link
             to={`/submission/${el.problem.slug}`}
             className="px-4 flex w-full items-center gap-2"
